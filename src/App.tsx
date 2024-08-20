@@ -1,4 +1,4 @@
-import Title from "./components/title-bar/Title";
+import {Title} from "./components/title-bar/Title";
 import { useState } from "react";
 import axios from "axios";
 import Subheader from "./components/title-bar/Subheader";

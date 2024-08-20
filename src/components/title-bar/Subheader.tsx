@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+interface SubheaderProps {
+  setInputValue: React.Dispatch<React.SetStateAction<string>>; // Function to set input value
+  inputValue: string; // Current value of the input
+  totalHits: number; // Total number of hits
+  submitForm: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
 const StyledHeader = styled.section`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-inline: 10px;
   padding-bottom: 10px;
+  min-height: 3rem;
+  border: solid black 2px;
   border-bottom: solid black 2px;
 `;
 
@@ -29,16 +39,17 @@ const StyledInput = styled.input`
 
 const initialMessage = "<-- Type a prompt to generate images";
 
-export default function Subheader({
+export const Subheader: React.FC<SubheaderProps> = ({
   setInputValue,
   inputValue,
   totalHits,
   submitForm,
-}) {
-  let [responseMessage, setResponseMessage] = useState(initialMessage);
+}) => {
+
+  const [responseMessage, setResponseMessage] = useState<string>(initialMessage);
 
   // Input change handler
-  const onChange = (e) => {
+  const onChange = (e: React.FormEvent<HTMLFormElement>) => {
     const { value } = e.target;
     setInputValue(value);
   };
