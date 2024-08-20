@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ImageCollage from "./imageCollage/ImageCollage";
+import {ImageCollage} from "./imageCollage/ImageCollage";
 import CardSelectScreen from "./CardSelectScreen";
 
 export default function ContentDisplay(props) {

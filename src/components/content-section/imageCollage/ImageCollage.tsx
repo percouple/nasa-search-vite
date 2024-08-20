@@ -3,6 +3,21 @@ import styled from "styled-components";
 import nasaLogo from "../../../nasa-logo.png";
 import Image from "./Image";
 
+// Define the type for an image item if not already defined
+interface ImageItem {
+  id: string; // Example field
+  url: string; // Example field
+  // Add other relevant fields for image data
+}
+
+// Define the props interface
+interface ImageContainerProps {
+  amountOfResultsShown: number;
+  imageData: ImageItem[]; // Array of image items
+  setSelectedCard: React.Dispatch<React.SetStateAction<ImageItem | null>>; // Function to set selected card
+  selectedCard: ImageItem | null; // Currently selected card
+}
+
 // Background/Main container styling
 const StyledContainer = styled.div`
   background-image: url(${nasaLogo});
@@ -63,16 +78,16 @@ const StyledCard = styled.div`
   } */
 `;
 
-export default function ImageContainer({
+export const ImageCollage: React.FC<ImageContainerProps> = ({
   amountOfResultsShown,
   imageData,
   setSelectedCard,
   selectedCard,
-}) {
+}) => {
   // Reduce rendered data by amount of results shown
   const reducedData = imageData.slice(0, amountOfResultsShown);
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     setSelectedCard(index);
   };
 
