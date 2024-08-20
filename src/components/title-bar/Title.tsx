@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+interface TitleProps {
+  setAmountOfResultsShown: React.Dispatch<React.SetStateAction<number>>; // Type for setter function
+  totalHits: number; // Type for totalHits
+}
+
 const StyledTitle = styled.section`
   display: flex;
   justify-content: space-between;
@@ -24,11 +29,11 @@ const SelectSentenceStyled = styled.span`
   min-width: 250px;
 `;
 
-export default function Title({
+export const Title: React.FC<TitleProps> = ({
   setAmountOfResultsShown,
   totalHits,
-}) {
-  const onChange = (e) => {
+}) => {
+  const onChange = (e: React.FormEvent<HTMLFormElement>) => {
     setAmountOfResultsShown(e.target.value);
   };
 

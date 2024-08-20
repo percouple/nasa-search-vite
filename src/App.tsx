@@ -9,11 +9,11 @@ const initialNasaData = [];
 
 function App() {
   let [nasaData, setNasaData] = useState(initialNasaData);
-  let [imageData, setImageData] = useState([]);
-  let [inputValue, setInputValue] = useState("");
-  let [loading, setLoading] = useState(false);
-  let [totalHits, setTotalHits] = useState(0);
-  let [amountOfResultsShown, setAmountOfResultsShown] = useState(10);
+  const [imageData, setImageData] = useState([]);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [totalHits, setTotalHits] = useState<number>(0);
+  const [amountOfResultsShown, setAmountOfResultsShown] = useState<number>(10);
 
   const url = "https://images-api.nasa.gov/search";
   const params = new URLSearchParams({
@@ -22,7 +22,7 @@ function App() {
   });
 
   // Input value change handler
-  const submitForm = (e) => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue !== ''){
 
