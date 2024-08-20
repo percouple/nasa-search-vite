@@ -37,7 +37,7 @@ const StyledInput = styled.input`
   }
 `;
 
-const initialMessage = "<-- Type a prompt to generate images";
+const initialMessage = "Type a prompt to generate images";
 
 export const Subheader: React.FC<SubheaderProps> = ({
   setInputValue,
@@ -66,6 +66,7 @@ export const Subheader: React.FC<SubheaderProps> = ({
 
   return (
     <StyledHeader>
+        <h4>{responseMessage}</h4>
       <form onSubmit={submitForm}>
         <StyledInput
           style={{ border: "1px black solid" }}
@@ -81,7 +82,6 @@ export const Subheader: React.FC<SubheaderProps> = ({
           Go!
         </StyledSubmitButton>
       </form>
-      <h4>{responseMessage}</h4>
     </StyledHeader>
   );
 }
