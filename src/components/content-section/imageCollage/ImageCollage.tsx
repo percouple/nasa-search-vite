@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import nasaLogo from "../../../nasa-logo.png";
-import Image from "./Image";
 
 // Define the type for an image item if not already defined
 interface ImageItem {
@@ -19,12 +18,13 @@ interface ImageContainerProps {
 }
 
 // Background/Main container styling
+// Commented out for potential alterations
 const StyledContainer = styled.div`
-  background-image: url(${nasaLogo});
+  /* background-image: url(${nasaLogo}); */
   background-size: 100%;
-  background-position: calc(50% + 30px) calc(50% + 30px);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-position: calc(50% + 30px) calc(50% + 30px); */
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
   background-color: rgba(50, 50, 50, 1);
 `;
 
@@ -43,39 +43,10 @@ const Overlay = styled.div`
 
 // Card Styling
 const StyledCard = styled.div`
-  width: fit-content;
-  height: fit-content;
-  margin: 6px;
-  border-radius: 10px;
-  background-size: contain;
-  border: 4px solid black;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   .selected {
     border: solid red 2px;
   }
-
-  // TODO - Add shadow when user hovers over
-  &:hover::after {
-    display: block;
-    content: "Click ";
-    position: absolute;
-    /* top: 0;
-    left: 0; */
-    width: auto;
-    height: auto;
-    background-color: rgba(0, 0, 0, 1); /* Adjust shadow color and opacity */
-    background-size: 100%;
-    border-radius: 10px;
-    z-index: 1000;
-  }
-  /* &::hover {
-    box-shadow: inset 100px 100px 0 0 rgba(0, 0, 0, 0.7);
-  } */
 `;
 
 export const ImageCollage: React.FC<ImageContainerProps> = ({
@@ -93,18 +64,17 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
 
   return (
     <StyledContainer>
-      <Overlay>
+      {/* <Overlay> */}
         {reducedData.map((item, index) => (
           <StyledCard
             onClick={() => handleClick(index)}
-            id={index}
             key={index}
             className={index === selectedCard ? "selected" : ""}
           >
-            <Image item={item} />
+            <img src={item.links[0].href} alt={item.data[0].title}></img>
           </StyledCard>
         ))}
-      </Overlay>
+      {/* </Overlay> */}
     </StyledContainer>
   );
 }

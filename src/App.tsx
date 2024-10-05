@@ -10,7 +10,7 @@ const initialNasaData = [];
 function App() {
   let [nasaData, setNasaData] = useState(initialNasaData);
   const [imageData, setImageData] = useState([]);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>("moon");
   const [loading, setLoading] = useState<boolean>(false);
   const [totalHits, setTotalHits] = useState<number>(0);
   const [amountOfResultsShown, setAmountOfResultsShown] = useState<number>(10);
@@ -50,7 +50,7 @@ function App() {
   return (
     <div className={loading ? "loading" : ""}>
       <Title
-        amountOfResultsShown={setAmountOfResultsShown}
+        amountOfResultsShown={amountOfResultsShown}
         setAmountOfResultsShown={setAmountOfResultsShown}
         totalHits={totalHits}
       />
