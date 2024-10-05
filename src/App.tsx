@@ -4,6 +4,7 @@ import axios from "axios";
 import {Subheader} from "./components/title-bar/Subheader";
 import ContentDisplay from "./components/content-section/ContentDisplay";
 import LoadingScreen from "./components/content-section/LoadingScreen";
+import './App.css';
 
 const initialNasaData = [];
 

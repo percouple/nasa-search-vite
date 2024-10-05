@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {ImageCollage} from "./imageCollage/ImageCollage";
 import CardSelectScreen from "./CardSelectScreen";
 

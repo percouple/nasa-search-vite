@@ -37,7 +37,7 @@ const StyledInput = styled.input`
   }
 `;
 
-const initialMessage = "Type a prompt to generate images";
+const initialMessage = "Search NASA";
 
 export const Subheader: React.FC<SubheaderProps> = ({
   setInputValue,
