@@ -43,17 +43,14 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
   return (
     <div className="image-collage-container">
       {reducedData.map((item, index) => (
-        <>
-          <div
-            onClick={() => handleClick(index)}
-            key={index}
-            className={`image-container ${getSpannedCard(index)} ${
-              index === selectedCard ? "selected" : ""
-            }`}
-            style={{ backgroundImage: `url(${item.links[0].href})` }}
-          ></div>
-          <div className="underlay"></div>
-        </>
+        <div
+          onClick={() => handleClick(index)}
+          key={index}
+          className={`image-container ${getSpannedCard(index)} ${
+            index === selectedCard ? "selected" : ""
+          }`}
+          style={{ backgroundImage: `url(${item.links[0].href})` }}
+        ></div>
       ))}
     </div>
   );
