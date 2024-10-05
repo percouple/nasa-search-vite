@@ -1,56 +1,56 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import './title-style.css';
 
-interface TitleProps {
-  setAmountOfResultsShown: React.Dispatch<React.SetStateAction<number>>; // Type for setter function
-  totalHits: number; // Type for totalHits
+interface SubheaderProps {
+  setInputValue: React.Dispatch<React.SetStateAction<string>>; // Function to set input value
+  inputValue: string; // Current value of the input
+  totalHits: number; // Total number of hits
+  submitForm: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const StyledTitle = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  min-width: 500px;
-`;
+const initialMessage = "Search NASA";
 
-const StyledSelect = styled.select`
-  background-color: white;
-
-  option {
-    background-color: white;
-    font-size: 200px;
-  }
-`;
-
-const SelectSentenceStyled = styled.span`
-  display: flex;
-  justify-content: space-around;
-  min-width: 250px;
-`;
-
-export const Title: React.FC<TitleProps> = ({
-  setAmountOfResultsShown,
+export const Title: React.FC<SubheaderProps> = ({
+  setInputValue,
+  inputValue,
   totalHits,
+  submitForm,
 }) => {
+
+  const [buttonMessage, setButtonMessage] = useState<string>(initialMessage);
+
+  // Input change handler
   const onChange = (e: React.FormEvent<HTMLFormElement>) => {
-    setAmountOfResultsShown(e.target.value);
+    const { value } = e.target;
+    setInputValue(value);
   };
 
+  // Message change handler
+  useEffect(() => {
+    if (totalHits) {
+      setButtonMessage(`${totalHits} images gathered`);
+    }
+  }, [totalHits]);
+
   return (
-    <StyledTitle>
-      <h1 className="title">Search NASA:</h1>
-      <SelectSentenceStyled>
-      <h4>Showing </h4>
-      <StyledSelect defaultValue={10} onChange={onChange}>
-        <option>5</option>
-        <option>10</option>
-        <option>30</option>
-        <option>50</option>
-        <option>100</option>
-      </StyledSelect>
-      <h4>results of {totalHits}</h4>
-      </SelectSentenceStyled>
-    </StyledTitle>
+    <section className="input-bar">
+      <form onSubmit={submitForm}>
+        <input
+          style={{ border: "1px black solid" }}
+          className=""
+          type="text"
+          placeholder="moon landing"
+          value={inputValue}
+          onChange={onChange}
+        ></input>
+        <button
+          style={{ marginLeft: "6px", border: "1px black solid" }}
+          type="submit"
+          className="submit-button"
+        >
+          {buttonMessage}
+        </button>
+      </form>
+    </section>
   );
 }

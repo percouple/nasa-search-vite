@@ -1,0 +1,27 @@
+/* Styles for the header */
+.input-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 3rem;
+    border: 2px solid black;
+    border-bottom: 2px solid black; /* Border bottom is already included */
+}
+
+/* Styles for the submit button */
+.submit-button {
+    background-color: blue;
+    border: 1px solid black;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+}
+
+/* Styles for the input */
+.styled-input:focus {
+    outline: none;
+    border: 1px solid red;
+    box-shadow: 0 0 10px #719ECE;
+}
