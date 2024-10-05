@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-import nasaLogo from "../../../nasa-logo.png";
+import "./image-collage-styles.css";
 
 // Define the type for an image item if not already defined
 interface ImageItem {
   id: string; // Example field
   url: string; // Example field
+  links: string[];
   // Add other relevant fields for image data
 }
 
@@ -17,38 +17,6 @@ interface ImageContainerProps {
   selectedCard: ImageItem | null; // Currently selected card
 }
 
-// Background/Main container styling
-// Commented out for potential alterations
-const StyledContainer = styled.div`
-  /* background-image: url(${nasaLogo}); */
-  background-size: 100%;
-  /* background-position: calc(50% + 30px) calc(50% + 30px); */
-  /* background-repeat: no-repeat; */
-  /* background-attachment: fixed; */
-  background-color: rgba(50, 50, 50, 1);
-`;
-
-const Overlay = styled.div`
-  padding-top: 10px;
-  margin: 0px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  min-height: 800px;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(40, 40, 40, 0.7);
-`;
-
-// Card Styling
-const StyledCard = styled.div`
-
-  .selected {
-    border: solid red 2px;
-  }
-`;
-
 export const ImageCollage: React.FC<ImageContainerProps> = ({
   amountOfResultsShown,
   imageData,
@@ -58,23 +26,32 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
   // Reduce rendered data by amount of results shown
   const reducedData = imageData.slice(0, amountOfResultsShown);
 
+  // Select a card for overlay
   const handleClick = (index: number) => {
     setSelectedCard(index);
   };
 
+  const getSpannedCard = (cardIndex: number) => {
+    if (cardIndex !== 0 && cardIndex % 5 === 0) {
+      return "card-tall";
+    }
+    if (cardIndex !== 0 && cardIndex % 6 === 0) {
+      return "card-wide";
+    }
+  };
+
   return (
-    <StyledContainer>
-      {/* <Overlay> */}
-        {reducedData.map((item, index) => (
-          <StyledCard
-            onClick={() => handleClick(index)}
-            key={index}
-            className={index === selectedCard ? "selected" : ""}
-          >
-            <img src={item.links[0].href} alt={item.data[0].title}></img>
-          </StyledCard>
-        ))}
-      {/* </Overlay> */}
-    </StyledContainer>
+    <div className="image-collage-container">
+      {reducedData.map((item, index) => (
+        <div
+          onClick={() => handleClick(index)}
+          key={index}
+          className={`image-container ${getSpannedCard(index)} ${
+            index === selectedCard ? "selected" : ""
+          }`}
+          style={{ backgroundImage: `url(${item.links[0].href})` }}
+        ></div>
+      ))}
+    </div>
   );
-}
+};
