@@ -1,3 +1,11 @@
+.introductory-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 25vh;
+}
+
 .input-bar {
   display: flex;
   flex-direction: row;
@@ -5,18 +13,11 @@
   align-items: end;
   margin-inline: 10vw;
   /* border: 2px solid red; */
-  height: 4rem;
+  height: 3rem;
   transition: all 600ms;
   margin-top: 3rem;
 }
 
-.introductory-text {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  font-size: 3rem;
-  margin-top: 25vh;
-}
 
 .submit-button {
   background-image: linear-gradient(
@@ -56,6 +57,7 @@
   height: calc(100% - 3px);
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
+  padding-left: 1rem;
 }
 
 .input:focus {
