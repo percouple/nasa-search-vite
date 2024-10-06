@@ -12,7 +12,6 @@ function App() {
   const [inputValue, setInputValue] = useState<string>("nebula");
   const [loading, setLoading] = useState<boolean>(false);
   const [totalHits, setTotalHits] = useState<number>(0);
-  const [amountOfResultsShown, setAmountOfResultsShown] = useState<number>(50);
 
   const url = "https://images-api.nasa.gov/search";
   const params = new URLSearchParams({
@@ -55,7 +54,6 @@ function App() {
         submitForm={submitForm}
       />
       <ContentDisplay
-        amountOfResultsShown={amountOfResultsShown}
         imageData={imageData}
         setLoading={setLoading}
         loading={loading}

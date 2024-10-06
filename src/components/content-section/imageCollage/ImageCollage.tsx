@@ -18,13 +18,11 @@ interface ImageContainerProps {
 }
 
 export const ImageCollage: React.FC<ImageContainerProps> = ({
-  amountOfResultsShown,
   imageData,
   setSelectedCard,
   selectedCard,
 }) => {
   // Reduce rendered data by amount of results shown
-  const reducedData = imageData.slice(0, amountOfResultsShown);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Select a card for overlay
@@ -66,11 +64,11 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
         }
       });
     };
-  }, [reducedData]);
+  }, [imageData]);
 
   return (
     <div className="image-collage-container">
-      {reducedData.map((item, index) => (
+      {imageData.map((item, index) => (
         <div
           ref={el => imageRefs.current[index] = el}
           onClick={() => handleClick(index)}
