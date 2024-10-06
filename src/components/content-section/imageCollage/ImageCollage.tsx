@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import "./image-collage-styles.css";
 
 // Define the type for an image item if not already defined
@@ -25,6 +25,7 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
 }) => {
   // Reduce rendered data by amount of results shown
   const reducedData = imageData.slice(0, amountOfResultsShown);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Select a card for overlay
   const handleClick = (index: number) => {
@@ -40,13 +41,41 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
     }
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('card-show');
+          // observer.unobserve(entry.target);
+          // entry.target.classList.remove('card-hidden')
+        } 
+      });
+    });
+
+    imageRefs.current.forEach((ref) => {
+      if (ref) {
+        observer.observe(ref);
+      }
+    })
+
+    // Cleanup observer on component unmount
+    return () => {
+      imageRefs.current.forEach((ref) => {
+        if (ref) {
+          observer.unobserve(ref);
+        }
+      });
+    };
+  }, [reducedData]);
+
   return (
     <div className="image-collage-container">
       {reducedData.map((item, index) => (
         <div
+          ref={el => imageRefs.current[index] = el}
           onClick={() => handleClick(index)}
           key={index}
-          className={`image-container ${getSpannedCard(index)} ${
+          className={`image-container card-hidden ${getSpannedCard(index)} ${
             index === selectedCard ? "selected" : ""
           }`}
           style={{ backgroundImage: `url(${item.links[0].href})` }}

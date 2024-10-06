@@ -32,3 +32,16 @@
 .card-wide {
     grid-column: span 2 / auto;
 }
+
+.card-hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-5px);
+    transition: all 1s;
+}
+
+.card-show {
+    opacity: 1;
+    transform: translateY(0px);
+    filter: blur(0);
+}
