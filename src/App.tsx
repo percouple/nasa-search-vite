@@ -4,10 +4,7 @@ import axios from "axios";
 import ContentDisplay from "./components/content-section/ContentDisplay";
 import "./index.css";
 
-const initialNasaData: object[] = [];
-
 function App() {
-  const [nasaData, setNasaData] = useState(initialNasaData);
   const [imageData, setImageData] = useState([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [totalHits, setTotalHits] = useState<number>(0);
@@ -22,12 +19,11 @@ function App() {
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue !== "") {
-      setNasaData([]);
+      // setNasaData([]);
       axios
         .get(`${url}?${params.toString()}`)
         .then((res) => {
           const { collection } = res.data;
-          setNasaData(collection);
           setImageData(collection.items);
           setTotalHits(collection.metadata.total_hits);
         })
