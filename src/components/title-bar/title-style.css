@@ -1,27 +1,63 @@
-/* Styles for the header */
 .input-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 3rem;
-    border: 2px solid black;
-    border-bottom: 2px solid black; /* Border bottom is already included */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  margin-inline: 10vw;
+  /* border: 2px solid red; */
+  height: 4rem;
+  transition: all 600ms;
+  margin-top: 3rem;
 }
 
-/* Styles for the submit button */
+.introductory-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 25vh;
+}
+
 .submit-button {
-    background-color: blue;
-    border: 1px solid black;
+  background-image: linear-gradient(
+    to bottom left,
+    hsl(206, 51%, 45%),
+    hsl(233, 63%, 31%)
+  );
+  width: 25%;
+  min-width: 15rem;
+  font-size: 2rem;
+  padding: 3px;
+  border: none;
+  color: white;
+  height: 100%;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  transition: all 200ms;
+}
+
+.submit-button:active {
+  transform: scale(0.97);
 }
 
 .submit-button:hover {
-    cursor: pointer;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to bottom left,
+    hsl(233, 63%, 31%),
+    hsl(206, 51%, 45%)
+  );
 }
 
-/* Styles for the input */
-.styled-input:focus {
-    outline: none;
-    border: 1px solid red;
-    box-shadow: 0 0 10px #719ECE;
+.input {
+  border: none;
+  font-size: 2rem;
+  width: 75%;
+  height: calc(100% - 3px);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.input:focus {
+  outline: none;
 }

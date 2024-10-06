@@ -2,8 +2,7 @@ import {Title} from "./components/title-bar/Title";
 import { useState } from "react";
 import axios from "axios";
 import ContentDisplay from "./components/content-section/ContentDisplay";
-import LoadingScreen from "./components/content-section/LoadingScreen";
-import './App.css';
+import './index.css'
 
 const initialNasaData = [];
 
@@ -48,7 +47,7 @@ function App() {
   }
     
   return (
-    <div className={loading ? "loading" : ""}>
+    <div className={`${loading ? "loading" : ""} source-code-pro-normal`}>
       <Title
         totalHits={totalHits}
         setInputValue={setInputValue}

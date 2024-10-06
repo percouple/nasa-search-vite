@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './title-style.css';
+import "./title-style.css";
 
 interface SubheaderProps {
   setInputValue: React.Dispatch<React.SetStateAction<string>>; // Function to set input value
@@ -16,7 +16,6 @@ export const Title: React.FC<SubheaderProps> = ({
   totalHits,
   submitForm,
 }) => {
-
   const [buttonMessage, setButtonMessage] = useState<string>(initialMessage);
 
   // Input change handler
@@ -28,29 +27,25 @@ export const Title: React.FC<SubheaderProps> = ({
   // Message change handler
   useEffect(() => {
     if (totalHits) {
-      setButtonMessage(`${totalHits} images gathered`);
+      setButtonMessage(`New Search`);
     }
   }, [totalHits]);
 
   return (
-    <section className="input-bar">
-      <form onSubmit={submitForm}>
+    <>
+      {!totalHits && <div className="introductory-text">Welcome to the NASA search bar!</div>}
+      <form onSubmit={submitForm} className="input-bar source-code-pro-normal">
         <input
-          style={{ border: "1px black solid" }}
-          className=""
+          className="input source-code-pro-normal"
           type="text"
           placeholder="moon landing"
           value={inputValue}
           onChange={onChange}
         ></input>
-        <button
-          style={{ marginLeft: "6px", border: "1px black solid" }}
-          type="submit"
-          className="submit-button"
-        >
+        <button type="submit" className="submit-button source-code-pro-normal">
           {buttonMessage}
         </button>
       </form>
-    </section>
+    </>
   );
-}
+};
