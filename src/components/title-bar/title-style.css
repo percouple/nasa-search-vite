@@ -34,11 +34,11 @@
   height: 100%;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  transition: all 200ms;
+  transition: all 100ms;
 }
 
 .submit-button:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
 }
 
 .submit-button:hover {

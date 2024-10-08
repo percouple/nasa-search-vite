@@ -2,6 +2,7 @@ import { Title } from "./components/title-bar/Title";
 import { useState } from "react";
 import axios from "axios";
 import ContentDisplay from "./components/content-section/ContentDisplay";
+import Footer from "./components/footer/footer";
 import "./index.css";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         submitForm={submitForm}
       />
       <ContentDisplay imageData={imageData} />
+      <Footer />
     </div>
   );
 }

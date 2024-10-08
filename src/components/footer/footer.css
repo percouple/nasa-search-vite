@@ -1,0 +1,51 @@
+.created-by{
+    text-align: center;
+    font-size: small;
+    font-weight: lighter;
+}
+
+.project-link {
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 500ms;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: linear-gradient(
+        to bottom left,
+        hsl(206, 51%, 45%),
+        hsl(233, 63%, 31%)
+    );
+    color: white;
+    border-radius: 1rem; 
+    z-index: 1; 
+    text-decoration: none;
+}
+
+.project-link:hover {
+    background: linear-gradient(
+        to bottom left,
+        hsla(206, 51%, 45%, 0.47),
+        hsla(233, 63%, 31%, 0.5)
+    );
+    color: #bbbbbb;
+}
+
+.project-link::before {
+    content: '';
+    position: absolute;
+    top: 4px; 
+    left: 4px; 
+    right: 4px; 
+    bottom: 4px; 
+    border-radius: 1rem; 
+    background-color: #222222;
+    z-index: -1; 
+}
+
+.project-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
