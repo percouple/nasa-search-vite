@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 500ms;
+    transition: all 100ms;
     margin-top: 1rem;
     padding: 1rem;
     background: linear-gradient(
@@ -31,6 +31,10 @@
     );
     color: #bbbbbb;
 }
+
+.project-link:active {
+    transform: scale(0.95);
+  }
 
 .project-link::before {
     content: '';
