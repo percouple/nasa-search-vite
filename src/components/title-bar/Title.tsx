@@ -29,12 +29,13 @@ export const Title: React.FC<SubheaderProps> = ({
     if (totalHits) {
       setButtonMessage(`New Search`);
     }
+    console.log(totalHits)
   }, [totalHits]);
 
   return (
     <>
-      {!totalHits && <div className="introductory-text">Welcome to the NASA search bar!</div>}
-      <form onSubmit={submitForm} className={`form-common flex-center source-code-pro-normal ${totalHits ? "fixed-form" : "landing-page-form"}`}>
+      <div className="introductory-text" style={totalHits ? {display: "none"} : {}}>Welcome to the NASA search bar!</div>
+      <form onSubmit={submitForm} className={`form-common flex-center source-code-pro-normal ${!totalHits ? "fixed-form" : "landing-page-form"}`}>
         <input
           className="input source-code-pro-normal"
           type="text"

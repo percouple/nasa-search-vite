@@ -50,9 +50,7 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
 
   // Reduce rendered data by amount of results shown
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  let [columns, setColumns] = useState(
-    getNumberOfColumns(".image-collage-container")
-  );
+  const [columns, setColumns] = useState(0);
 
   // Select a card for overlay
   const handleClick = (index: number) => {
@@ -71,15 +69,15 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
     const square = "card-tall card-wide"; // Added for completeness
 
     // Check if the card can be tall
-    const isTall = (index) =>
+    const isTall = (index: number) =>
       index % columns === 0 && index + columns < totalCards;
 
     // Check if the card can be wide
-    const isWide = (index) =>
+    const isWide = (index: number) =>
       index % (columns * 2) === 0 && index + 1 < totalCards;
 
     // Check if the card can be square (2x2)
-    const isSquare = (index) =>
+    const isSquare = (index: number) =>
       index % (columns * 2) === 2 && index + columns + 1 < totalCards;
 
     switch (columns) {
@@ -165,6 +163,9 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
 
   // Update the amount of columns if the size of the screen width changes
   useEffect(() => {
+
+    setColumns(getNumberOfColumns('.image-collage-container'))
+
     const handleResize = () => {
       setColumns(getNumberOfColumns(".image-collage-container"));
       console.log("Screenwidth changing");
@@ -180,21 +181,20 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
   }, []);
 
   return (
-
-      <div className="image-collage-container">
-        {imageData.map((item, index) => (
-          <div
-            ref={(el) => (imageRefs.current[index] = el)}
-            onClick={() => handleClick(index)}
-            key={index}
-            className={`image-container card-hidden ${getSpannedCard(
-              columns,
-              index,
-              imageData.length
-            )} ${index === selectedCard ? "selected" : ""}`}
-            style={{ backgroundImage: `url(${item.links[0].href})` }}
-          ></div>
-        ))}
-      </div>
+    <div className="image-collage-container">
+      {imageData.map((item, index) => (
+        <div
+          ref={(el) => (imageRefs.current[index] = el)}
+          onClick={() => handleClick(index)}
+          key={index}
+          className={`image-container card-hidden ${getSpannedCard(
+            columns,
+            index,
+            imageData.length
+          )} ${index === selectedCard ? "selected" : ""}`}
+          style={{ backgroundImage: `url(${item.links[0].href})` }}
+        ></div>
+      ))}
+    </div>
   );
 };
