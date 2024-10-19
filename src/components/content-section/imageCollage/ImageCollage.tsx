@@ -50,19 +50,21 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
 
   // Reduce rendered data by amount of results shown
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  let [columns, setColumns] = useState(getNumberOfColumns(".image-collage-container"));
+  let [columns, setColumns] = useState(
+    getNumberOfColumns(".image-collage-container")
+  );
 
   // Select a card for overlay
   const handleClick = (index: number) => {
     setSelectedCard(index);
   };
 
-  // Takes in columns, index of card, and the total card count, 
-  // Returns 
+  // Takes in columns, index of card, and the total card count,
+  // Returns
   const getSpannedCard = (
     columns: number,
     cardIndex: number,
-    totalCards: number,
+    totalCards: number
   ) => {
     const wide = "card-wide";
     const tall = "card-tall";
@@ -165,34 +167,34 @@ export const ImageCollage: React.FC<ImageContainerProps> = ({
   useEffect(() => {
     const handleResize = () => {
       setColumns(getNumberOfColumns(".image-collage-container"));
-      console.log("Screenwidth changing")
-    }
-    
+      console.log("Screenwidth changing");
+    };
+
     // Add event listener
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup function to remove the listener
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
-
-  }, [])
+  }, []);
 
   return (
-    <div className="image-collage-container">
-      {imageData.map((item, index) => (
-        <div
-          ref={(el) => (imageRefs.current[index] = el)}
-          onClick={() => handleClick(index)}
-          key={index}
-          className={`image-container card-hidden ${getSpannedCard(
-            columns,
-            index,
-            imageData.length
-          )} ${index === selectedCard ? "selected" : ""}`}
-          style={{ backgroundImage: `url(${item.links[0].href})` }}
-        ></div>
-      ))}
-    </div>
+
+      <div className="image-collage-container">
+        {imageData.map((item, index) => (
+          <div
+            ref={(el) => (imageRefs.current[index] = el)}
+            onClick={() => handleClick(index)}
+            key={index}
+            className={`image-container card-hidden ${getSpannedCard(
+              columns,
+              index,
+              imageData.length
+            )} ${index === selectedCard ? "selected" : ""}`}
+            style={{ backgroundImage: `url(${item.links[0].href})` }}
+          ></div>
+        ))}
+      </div>
   );
 };

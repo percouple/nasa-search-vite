@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className={`source-code-pro-normal`}>
+    <div className="source-code-pro-normal flex-column">
       <Title
         totalHits={totalHits}
         setInputValue={setInputValue}
@@ -43,7 +43,7 @@ function App() {
         submitForm={submitForm}
       />
       <ContentDisplay imageData={imageData} />
-      <Footer />
+      <Footer totalHits={totalHits} />
     </div>
   );
 }

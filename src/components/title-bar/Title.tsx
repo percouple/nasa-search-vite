@@ -34,7 +34,7 @@ export const Title: React.FC<SubheaderProps> = ({
   return (
     <>
       {!totalHits && <div className="introductory-text">Welcome to the NASA search bar!</div>}
-      <form onSubmit={submitForm} className="input-bar source-code-pro-normal">
+      <form onSubmit={submitForm} className={`form-common flex-center source-code-pro-normal ${totalHits ? "fixed-form" : "landing-page-form"}`}>
         <input
           className="input source-code-pro-normal"
           type="text"
