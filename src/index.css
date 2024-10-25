@@ -2,6 +2,7 @@ body {
     color: white;
     background: #222222;
     margin: 0px;
+    transition: all 100ms;
 }
 
 .source-code-pro-normal {
