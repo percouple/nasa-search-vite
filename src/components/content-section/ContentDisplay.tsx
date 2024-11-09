@@ -2,7 +2,8 @@ import { useState } from "react";
 import {ImageCollage} from "./imageCollage/ImageCollage";
 import CardSelectScreen from "./card-select-screen/CardSelectScreen";
 
-export default function ContentDisplay(props) {
+
+const ContentDisplay = (props) => {
   
   const [selectedCard, setSelectedCard] = useState(null);
 
@@ -18,13 +19,15 @@ export default function ContentDisplay(props) {
         <></>
       )}
       <ImageCollage
-        amountOfResultsShown={props.amountOfResultsShown}
+        // amountOfResultsShown={props.amountOfResultsShown}
         imageData={props.imageData}
-        setLoading={props.setLoading}
-        loading={props.loading}
+        // setLoading={props.setLoading}
+        // loading={props.loading}
         setSelectedCard={setSelectedCard}
         selectedCard={selectedCard}
       />
     </>
   );
 }
+
+export default ContentDisplay;

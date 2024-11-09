@@ -1,6 +1,10 @@
 import "./footer.css";
 
-export default function Footer({ totalHits }) {
+interface FooterProps {
+  totalHits: number;
+}
+
+const Footer: React.FC<FooterProps> = ({ totalHits }) => {
 
   const clickHandler = () => {
     window.location.href = "www.wikipedia.com"
@@ -20,3 +24,5 @@ export default function Footer({ totalHits }) {
     </div>
   );
 }
+
+export default Footer;

@@ -19,8 +19,9 @@ export const Title: React.FC<SubheaderProps> = ({
   const [buttonMessage, setButtonMessage] = useState<string>(initialMessage);
 
   // Input change handler
-  const onChange = (e: React.FormEvent<HTMLFormElement>) => {
-    const { value } = e.target;
+  // eslint-disable-next-line
+  const onChange = (e: any) => {
+    const value = e.target.value;
     setInputValue(value);
   };
 

@@ -5,9 +5,12 @@ import ContentDisplay from "./components/content-section/ContentDisplay";
 import Footer from "./components/footer/footer";
 import "./index.css";
 
+interface ImageItem {
+
+}
 
 function App() {
-  const [imageData, setImageData] = useState([]);
+  const [imageData, setImageData] = useState<ImageItem[] | null>(null);
   const [inputValue, setInputValue] = useState<string>("");
   const [totalHits, setTotalHits] = useState<number>(0);
   const [windowSize, setWindowSize] = useState({
@@ -21,6 +24,7 @@ function App() {
     media_type: "image",
   });
 
+  // request NASA data
   const sendGetRequest = (e: React.FormEvent<HTMLFormElement>) => {
     if (e) {
       e.preventDefault();
@@ -37,6 +41,7 @@ function App() {
         console.log(err);
       });
     }
+    console.log(imageData)
   }
 
   // Input value change handler
